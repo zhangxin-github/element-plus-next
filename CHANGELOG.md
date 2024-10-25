@@ -4,8 +4,8 @@
 
 ### 🐣 功能
 
-1. 基于vue3+bootstrap-vue-next实现导航界面。
-1. 使用 simple-icons图标。
+1. 基于 vue3+bootstrap-vue-next 实现导航界面。
+1. 使用 simple-icons 图标。
 1. 使用 https://icon-sets.iconify.design/ 在线图标。
 
 ### ⚠️ 注意：本地开发指南
@@ -17,6 +17,7 @@ npm install -g pnpm
 ```
 
 2. 使用 pnpm i 安装依赖
+
 ```
 nvm list available
 nvm install 18.12.0
@@ -25,10 +26,16 @@ pnpm i
 ```
 
 3. 本地开发
+
 ```
 pnpm dev
 pnpm docs:gen-locale
 pnpm docs:dev
+
+# 修改名称/版本号后再build
+packages/element-plus/package.json
+packages/element-plus/version.ts
+pnpm build
 ```
 
 4. 链接本地依赖
