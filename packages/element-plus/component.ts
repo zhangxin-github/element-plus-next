@@ -108,6 +108,9 @@ import { ElAnchor, ElAnchorLink } from '@element-plus/components/anchor'
 import { ElSegmented } from '@element-plus/components/segmented'
 import { ElMention } from '@element-plus/components/mention'
 
+// next
+import { ElNextCard2 } from '@element-plus/components/next-card2'
+
 import type { Plugin } from 'vue'
 
 export default [
@@ -216,4 +219,7 @@ export default [
   ElAnchorLink,
   ElSegmented,
   ElMention,
+
+  // next
+  ElNextCard2,
 ] as Plugin[]

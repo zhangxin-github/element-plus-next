@@ -82,3 +82,6 @@ export * from './message'
 export * from './message-box'
 export * from './notification'
 export * from './popover'
+
+// next
+export * from './next-card2'
