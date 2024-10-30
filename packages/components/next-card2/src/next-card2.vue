@@ -1,28 +1,56 @@
 <template>
   <div
     :class="[
-      'el-next-card2',
-      { horizontal: type === 'horizontal', vertical: type === 'vertical' },
+      ns.b(),
+      ns.is(`${shadow}-shadow`),
+      {
+        'el-next-card2': type === 'horizontal' || type === 'vertical',
+        horizontal: type === 'horizontal',
+        vertical: type === 'vertical',
+      },
     ]"
   >
     <div v-if="type === 'horizontal'" class="horizontal-layout">
       <div class="card-img">
-        <img :src="img" alt="Card Image" />
+        <!-- <img :src="img" alt="Card Image" /> -->
+        <slot name="avatar" />
       </div>
       <div class="card-content">
         <h3 class="card-title">{{ title }}</h3>
         <p class="card-desc">{{ desc }}</p>
       </div>
     </div>
+
     <div v-if="type === 'vertical'" class="vertical-layout">
-      <img :src="img" alt="Card Image" class="card-img" />
+      <slot name="avatar" />
       <h3 class="card-title">{{ title }}</h3>
       <p class="card-desc">{{ desc }}</p>
+    </div>
+
+    <div v-if="$slots.header || header" :class="ns.e('header')">
+      <slot name="header">{{ header }}</slot>
+    </div>
+
+    <div
+      v-if="type !== 'horizontal' && type !== 'vertical' && !img"
+      :class="[ns.e('body'), bodyClass]"
+      :style="bodyStyle"
+    >
+      <slot />
+    </div>
+
+    <template v-if="img">
+      <img :src="img" alt="Card Image" class="card-img" />
+    </template>
+
+    <div v-if="$slots.footer || footer" :class="ns.e('footer')">
+      <slot name="footer">{{ footer }}</slot>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useNamespace } from '@element-plus/hooks'
 import { nextCard2Props } from './next-card2'
 
 defineOptions({
@@ -31,7 +59,7 @@ defineOptions({
 
 defineProps(nextCard2Props)
 
-// init here
+const ns = useNamespace('card')
 </script>
 
 <style lang="scss" scoped>
