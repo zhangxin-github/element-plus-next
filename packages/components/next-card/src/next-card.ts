@@ -1,8 +1,8 @@
 import { buildProps, definePropType } from '@element-plus/utils'
 import type { ExtractPropTypes, StyleValue } from 'vue'
-import type NextCard2 from './next-card2.vue'
+import type NextCard from './next-card.vue'
 
-export const nextCard2Props = buildProps({
+export const nextCardProps = buildProps({
   /**
    * @description 继承了 el-card 的所有属性
    */
@@ -28,6 +28,10 @@ export const nextCard2Props = buildProps({
   /**
    * @description
    */
+  headerBordered: {
+    type: Boolean,
+    default: false,
+  },
   type: {
     type: String,
     default: '',
@@ -48,5 +52,5 @@ export const nextCard2Props = buildProps({
   },
 })
 
-export type NextCard2Props = ExtractPropTypes<typeof nextCard2Props>
-export type NextCard2Instance = InstanceType<typeof NextCard2>
+export type NextCardProps = ExtractPropTypes<typeof nextCardProps>
+export type NextCardInstance = InstanceType<typeof NextCard>

@@ -4,31 +4,34 @@
       ns.b(),
       ns.is(`${shadow}-shadow`),
       {
-        'el-next-card2': type === 'horizontal' || type === 'vertical',
+        'el-next-card': type === 'horizontal' || type === 'vertical',
         horizontal: type === 'horizontal',
         vertical: type === 'vertical',
       },
     ]"
   >
-    <div v-if="type === 'horizontal'" class="horizontal-layout">
-      <div class="card-img">
-        <!-- <img :src="img" alt="Card Image" /> -->
-        <slot name="avatar" />
+    <div
+      v-if="$slots.header || header || type"
+      :class="[ns.e('header'), { 'no-border': headerBordered }]"
+    >
+      <div v-if="type === 'horizontal'" class="horizontal-layout">
+        <div class="card-img">
+          <!-- <img :src="img" alt="Card Image" /> -->
+          <slot name="avatar" />
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">{{ title }}</h3>
+          <p class="card-desc">{{ desc }}</p>
+        </div>
       </div>
-      <div class="card-content">
+      <div v-else-if="type === 'vertical'" class="vertical-layout">
+        <slot name="avatar" />
         <h3 class="card-title">{{ title }}</h3>
         <p class="card-desc">{{ desc }}</p>
       </div>
-    </div>
-
-    <div v-if="type === 'vertical'" class="vertical-layout">
-      <slot name="avatar" />
-      <h3 class="card-title">{{ title }}</h3>
-      <p class="card-desc">{{ desc }}</p>
-    </div>
-
-    <div v-if="$slots.header || header" :class="ns.e('header')">
-      <slot name="header">{{ header }}</slot>
+      <template v-else>
+        <slot name="header">{{ header }}</slot>
+      </template>
     </div>
 
     <div
@@ -51,19 +54,19 @@
 
 <script lang="ts" setup>
 import { useNamespace } from '@element-plus/hooks'
-import { nextCard2Props } from './next-card2'
+import { nextCardProps } from './next-card'
 
 defineOptions({
-  name: 'ElNextCard2',
+  name: 'ElNextCard',
 })
 
-defineProps(nextCard2Props)
+defineProps(nextCardProps)
 
 const ns = useNamespace('card')
 </script>
 
 <style lang="scss" scoped>
-.el-next-card2 {
+.el-next-card {
   display: flex;
   flex-direction: column;
   padding: 16px;
@@ -89,10 +92,6 @@ const ns = useNamespace('card')
   }
 }
 
-.card-content {
-  flex: 1;
-}
-
 .vertical-layout {
   text-align: center;
 
@@ -100,6 +99,16 @@ const ns = useNamespace('card')
     width: 100px;
     height: auto;
   }
+}
+
+.no-border {
+  border-bottom: none; /* 移除边框 */
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.card-content {
+  flex: 1;
 }
 
 .card-title {

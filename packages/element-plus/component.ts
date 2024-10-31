@@ -109,7 +109,7 @@ import { ElSegmented } from '@element-plus/components/segmented'
 import { ElMention } from '@element-plus/components/mention'
 
 // next
-import { ElNextCard2 } from '@element-plus/components/next-card2'
+import { ElNextCard } from '@element-plus/components/next-card'
 
 import type { Plugin } from 'vue'
 
@@ -221,5 +221,5 @@ export default [
   ElMention,
 
   // next
-  ElNextCard2,
+  ElNextCard,
 ] as Plugin[]

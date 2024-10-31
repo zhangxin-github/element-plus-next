@@ -84,4 +84,4 @@ export * from './notification'
 export * from './popover'
 
 // next
-export * from './next-card2'
+export * from './next-card'
