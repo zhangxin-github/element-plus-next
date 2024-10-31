@@ -4,12 +4,13 @@
 
 ### 🐣 功能
 
-1. 拉取 dev 分支代码。
-1. 创建 release/v0.1.0 分支。
-1. 修改项目名称。
+
 1. 使用 。
 
 ### ⚠️ 注意：本地开发指南
+
+1. clone 项目拉取 dev 分支更新代码。
+1. 创建 release/v版本号 分支。
 
 1. 使用 npm 安装 pnpm
 
@@ -20,16 +21,16 @@ nvm use 18.12.0
 npm install -g pnpm
 ```
 
-2. 本地开发运行
+4. 本地开发运行命令
 
 ```
 pnpm i
-pnpm run clean
+pnpm build
 pnpm dev
 pnpm docs:dev
 ```
 
-3. 创建组件
+5. 创建组件
 
 ```
 pnpm gen <组件名>
@@ -40,13 +41,13 @@ pnpm gen <组件名>
 - packages/components/index.ts
 - packages/element-plus/components.ts
 
-4. 创建组件文档
+6. 创建组件文档
 
-创建组件后，手动添加文档配置文件
+创建组件后，手动添加
 
 - docs/zh-CN/components/<组件名>.md
-- docs/.vitepress/crowdin/zh-CN/pages/component.json 新增组件路由
-- docs/.vitepress/example 文件夹下新增组件文件夹，放置组件.vue 文件
+- docs/.vitepress/crowdin/zh-CN/pages/component.json 新增组件菜单路由
+- docs/example 文件夹下新增组件文件夹，放置组件.vue 文件
 
 5. 修改名称/版本号
 
