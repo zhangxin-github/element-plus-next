@@ -64,6 +64,14 @@ npm login --registry https://maven.unibss.com:10010/repository/npm-hosted
 npm publish --registry https://maven.unibss.com:10010/repository/npm-hosted
 ```
 
+7. 移除赞助商等边栏信息
+
+- docs/.vitepress/vitepress/components/globals/parallax-home.vue
+- docs/.vitepress/vitepress/components/vp-content.vue
+- docs/.vitepress/vitepress/components/vp-app.vue
+- docs/.vitepress/vitepress/components/doc-content/vp-table-of-content.vue
+
+
 7. 参考
 
 ```

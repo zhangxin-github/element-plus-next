@@ -144,7 +144,7 @@ useEventListener(window, 'scroll', handleScroll)
     <HomeSponsors />
     <HomeCards />
   </div>
-  <HomeFooter :is-home="true" />
+  <!--  <HomeFooter :is-home="true" />-->
 </template>
 
 <style lang="scss">

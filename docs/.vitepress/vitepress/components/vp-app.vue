@@ -130,7 +130,7 @@ onMounted(async () => {
     />
     <VPSidebar :open="isSidebarOpen" @close="toggleSidebar(false)">
       <template #top>
-        <VPSponsors />
+        <!--        <VPSponsors />-->
       </template>
       <template #bottom>
         <slot name="sidebar-bottom" />

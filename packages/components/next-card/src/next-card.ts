@@ -32,20 +32,32 @@ export const nextCardProps = buildProps({
     type: Boolean,
     default: false,
   },
+  /**
+   * @description
+   */
   type: {
     type: String,
     default: '',
     validator: (value: string) =>
       ['horizontal', 'vertical', ''].includes(value),
   },
+  /**
+   * @description
+   */
   img: {
     type: String,
     default: '',
   },
+  /**
+   * @description
+   */
   title: {
     type: String,
     default: '',
   },
+  /**
+   * @description
+   */
   desc: {
     type: String,
     default: '',

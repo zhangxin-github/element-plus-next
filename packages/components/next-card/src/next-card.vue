@@ -12,11 +12,14 @@
   >
     <div
       v-if="$slots.header || header || type"
-      :class="[ns.e('header'), { 'no-border': headerBordered }]"
+      :class="[
+        ns.e('header'),
+        'el-next-card__header',
+        { 'no-border': headerBordered },
+      ]"
     >
       <div v-if="type === 'horizontal'" class="horizontal-layout">
-        <div class="card-img">
-          <!-- <img :src="img" alt="Card Image" /> -->
+        <div v-if="$slots.avatar" class="card-img">
           <slot name="avatar" />
         </div>
         <div class="card-content">
@@ -26,17 +29,22 @@
       </div>
       <div v-else-if="type === 'vertical'" class="vertical-layout">
         <slot name="avatar" />
-        <h3 class="card-title">{{ title }}</h3>
+        <h3 class="card-title" style="justify-content: center">{{ title }}</h3>
         <p class="card-desc">{{ desc }}</p>
       </div>
       <template v-else>
-        <slot name="header">{{ header }}</slot>
+        <div class="el-next-card__header-wrapper">
+          <slot name="header">{{ header }}</slot>
+        </div>
       </template>
+      <div v-if="$slots.actions" class="el-next-card__action">
+        <slot name="actions" />
+      </div>
     </div>
 
     <div
-      v-if="type !== 'horizontal' && type !== 'vertical' && !img"
-      :class="[ns.e('body'), bodyClass]"
+      v-if="!img"
+      :class="[ns.e('body'), 'el-next-card__body', bodyClass]"
       :style="bodyStyle"
     >
       <slot />
@@ -46,8 +54,20 @@
       <img :src="img" alt="Card Image" class="card-img" />
     </template>
 
-    <div v-if="$slots.footer || footer" :class="ns.e('footer')">
-      <slot name="footer">{{ footer }}</slot>
+    <div
+      v-if="$slots.footer || footer"
+      :class="[
+        ns.e('footer'),
+        'el-next-card__footer',
+        { 'no-border': headerBordered },
+      ]"
+    >
+      <div class="el-next-card__footer-wrapper">
+        <slot name="footer">{{ footer }}</slot>
+      </div>
+      <div v-if="!type" class="el-next-card__action">
+        <slot name="actions" />
+      </div>
     </div>
   </div>
 </template>
@@ -102,9 +122,10 @@ const ns = useNamespace('card')
 }
 
 .no-border {
-  border-bottom: none; /* 移除边框 */
-  padding-bottom: 0;
-  margin-bottom: 0;
+  border-top: none;
+  /* 移除边框 */
+  border-bottom: none;
+  /* 移除边框 */
 }
 
 .card-content {
@@ -121,5 +142,38 @@ const ns = useNamespace('card')
 .card-desc {
   margin: 0;
   color: #666;
+}
+
+.el-next-card__header {
+  display: flex;
+}
+
+.el-next-card__header-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.el-next-card__action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+}
+
+.el-next-card__body {
+  padding: 3px;
+}
+
+.el-next-card__footer {
+  display: flex;
+}
+
+.el-next-card__footer-wrapper {
+  flex: 1;
+}
+
+:deep(.el-tooltip__trigger:focus-visible) {
+  outline: none;
 }
 </style>

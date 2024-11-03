@@ -7,8 +7,8 @@ import SponsorList from './sponsor-list.vue'
 
 <template>
   <div class="sponsors-container" m="auto">
-    <SponsorList :sponsors="platinumSponsors" sponsor-type="platinumSponsor" />
-    <SponsorList :sponsors="goldSponsors" sponsor-type="goldSponsor" />
+    <!--    <SponsorList :sponsors="platinumSponsors" sponsor-type="platinumSponsor" />-->
+    <!--    <SponsorList :sponsors="goldSponsors" sponsor-type="goldSponsor" />-->
 
     <sponsors-button round />
   </div>
