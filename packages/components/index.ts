@@ -85,3 +85,4 @@ export * from './popover'
 
 // next
 export * from './next-card'
+export * from './next-backtop'
