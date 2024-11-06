@@ -9,13 +9,21 @@
       <slot name="default">
         <el-icon><CaretTop /></el-icon>
       </slot>
-      <transition name="slide-fade">
-        <div class="el-next-backtop-menus" :style="computedMenuStyle">
-          <el-icon><CaretTop /></el-icon>
-          <el-icon><CaretTop /></el-icon>
-          <el-icon><CaretTop /></el-icon>
+      <div
+        class="el-next-backtop-menus"
+        :style="computedMenuStyle"
+        @click.stop="handleMenuClick"
+      >
+        <div class="ant-float-btn-group-circle">A</div>
+        <div
+          class="ant-float-btn-group-circle"
+          href="https://www.baidu.com"
+          @click="handleMenuItemClick($event)"
+        >
+          B
         </div>
-      </transition>
+        <div class="ant-float-btn-group-circle">C</div>
+      </div>
     </el-backtop>
   </div>
 </template>
@@ -23,8 +31,7 @@
 <script lang="ts" setup>
 import { computed, defineEmits, defineProps, onMounted, ref, watch } from 'vue'
 import { ElBacktop } from 'element-plus'
-import { ElIcon } from '@element-plus/components/icon'
-import { CaretTop } from '@element-plus/icons-vue'
+import { CaretTop, Search } from '@element-plus/icons-vue'
 import { useNamespace } from '@element-plus/hooks'
 import { nextBacktopProps } from './next-backtop'
 
@@ -47,6 +54,18 @@ const emit = defineEmits(['click'])
 // 点击事件的处理函数
 const handleClick = () => {
   emit('click')
+}
+
+const handleMenuClick = (event) => {
+  event.stopPropagation() // 阻止事件冒泡到 el-backtop
+}
+
+const handleMenuItemClick = (event) => {
+  if (event.target.attributes.href) {
+    window.location.href = event.target.attributes.href.value
+  } else {
+    console.log('click menu item')
+  }
 }
 
 const BOX_SIZE = 100
@@ -72,7 +91,7 @@ const computedMenuStyle = computed(() => {
   const index = ['top', 'right', 'bottom', 'left'].indexOf(props.boxStyle)
   return {
     position: 'absolute',
-    insetInlineEnd: `${insetInlineEnd[index]}px`,
+    // insetInlineEnd: `${insetInlineEnd[index]}px`,
     bottom: `${bottomValue[index]}px`,
   }
 })
@@ -102,14 +121,6 @@ onMounted(() => {
   transform: scale(1.1);
 }
 
-.backtop-button > * {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }
@@ -124,9 +135,28 @@ onMounted(() => {
 .el-next-backtop-menus {
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border-radius: 4px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  padding: 8px;
+  //background-color: #fff;
+  //border-radius: 4px;
+  //box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.el-next-backtop-menus > * {
+  display: flex;
+  border: 1px solid green;
+  background-color: lime;
+  width: 100%;
+  //height: 100%;
+  //display: flex;
+  align-items: center;
+  justify-content: center;
+  //padding: 8px;
+  //margin-bottom: 10px;
+}
+.ant-float-btn-group-circle {
+  gap: 16px;
 }
 </style>
