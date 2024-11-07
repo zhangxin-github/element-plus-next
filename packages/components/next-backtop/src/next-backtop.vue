@@ -1,28 +1,50 @@
 <template>
-  <div>
+  <div @mouseenter="show = true" @mouseleave="hideMenu">
     <el-backtop
+      class="el-next-backtop"
       :bottom="bottom"
       :right="right"
       :visibility-height="visibilityHeight"
       @click="handleClick"
     >
-      <slot name="default">
-        <el-icon><CaretTop /></el-icon>
-      </slot>
+      <template v-if="!float">
+        <slot>
+          <el-icon><CaretTop /></el-icon>
+        </slot>
+      </template>
+      <template v-if="float">
+        <slot>
+          <el-tooltip
+            class="box-item"
+            effect="dark"
+            content="Left Top prompts info"
+            placement="left-start"
+          >
+            <el-button
+              :type="type"
+              :icon="icon"
+              :circle="!square"
+              :class="{ 'is-square': square }"
+          /></el-tooltip>
+        </slot>
+      </template>
       <div
-        class="el-next-backtop-menus"
+        v-if="!float"
         :style="computedMenuStyle"
         @click.stop="handleMenuClick"
       >
-        <div class="ant-float-btn-group-circle">A</div>
-        <div
-          class="ant-float-btn-group-circle"
-          href="https://www.baidu.com"
-          @click="handleMenuItemClick($event)"
-        >
-          B
-        </div>
-        <div class="ant-float-btn-group-circle">C</div>
+        <transition name="el-zoom-in-bottom">
+          <div
+            v-show="show"
+            class="item"
+            @mouseenter="show = true"
+            @mouseleave="hideMenu"
+          >
+            <el-button type="primary" :icon="Search" circle />
+            <el-button type="success" :icon="Search" circle />
+            <el-button type="info" :icon="Search" circle />
+          </div>
+        </transition>
       </div>
     </el-backtop>
   </div>
@@ -30,7 +52,9 @@
 
 <script lang="ts" setup>
 import { computed, defineEmits, defineProps, onMounted, ref, watch } from 'vue'
-import { ElBacktop } from 'element-plus'
+import ElButton from '@element-plus/components/button'
+import ElBacktop from '@element-plus/components/backtop'
+import ElTooltip from '@element-plus/components/tooltip'
 import { CaretTop, Search } from '@element-plus/icons-vue'
 import { useNamespace } from '@element-plus/hooks'
 import { nextBacktopProps } from './next-backtop'
@@ -54,6 +78,17 @@ const emit = defineEmits(['click'])
 // 点击事件的处理函数
 const handleClick = () => {
   emit('click')
+}
+
+const show = ref(false)
+let hideTimeout: number | null = null
+const hideMenu = () => {
+  if (hideTimeout) {
+    clearTimeout(hideTimeout)
+  }
+  hideTimeout = setTimeout(() => {
+    show.value = false
+  }, 300) // 延迟300毫秒后隐藏菜单
 }
 
 const handleMenuClick = (event) => {
@@ -91,8 +126,10 @@ const computedMenuStyle = computed(() => {
   const index = ['top', 'right', 'bottom', 'left'].indexOf(props.boxStyle)
   return {
     position: 'absolute',
+    width: '100%',
     // insetInlineEnd: `${insetInlineEnd[index]}px`,
-    bottom: `${bottomValue[index]}px`,
+    // bottom: `${bottomValue[index]}px`,
+    bottom: `50px`,
   }
 })
 
@@ -102,18 +139,19 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.backtop-button {
+.el-next-backtop {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: var(--el-bg-color-overlay);
-  border-radius: 50%;
-  box-shadow: var(--el-box-shadow-lighter);
-  color: #1989fa;
   cursor: pointer;
   transition: all 0.3s;
+  box-shadow: none;
+
+  .el-button.is-square {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
 }
 
 .backtop-button-hover {
@@ -132,31 +170,28 @@ onMounted(() => {
   transform: translateX(10px);
   opacity: 0;
 }
+
 .el-next-backtop-menus {
   display: flex;
   flex-direction: column;
-  //background-color: #fff;
-  //border-radius: 4px;
-  //box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  /* background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1); */
   align-items: center;
   justify-content: center;
   width: 100%;
   gap: 16px;
 }
-
-.el-next-backtop-menus > * {
+.item {
   display: flex;
-  border: 1px solid green;
-  background-color: lime;
-  width: 100%;
-  //height: 100%;
-  //display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  //padding: 8px;
-  //margin-bottom: 10px;
-}
-.ant-float-btn-group-circle {
-  gap: 16px;
+  width: 100%;
+  gap: 10px;
+
+  .el-button + .el-button {
+    margin-left: 0;
+  }
 }
 </style>
