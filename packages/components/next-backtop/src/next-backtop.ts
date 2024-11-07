@@ -50,6 +50,7 @@ export const nextBacktopProps = buildProps({
   },
   square: Boolean,
   trigger: { type: String, default: 'hover' },
+  tooltip: { type: String, default: '' },
 })
 
 export type NextBacktopProps = ExtractPropTypes<typeof nextBacktopProps>
