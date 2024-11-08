@@ -368,9 +368,8 @@
         "text": "NextCard 卡片"
       },
       {
-        "link": "/watermark",
-        "text": "Watermark 水印 ",
-        "promotion": "2.4.0"
+        "link": "/next-backtop",
+        "text": "NextBacktop 回到顶部"
       }
     ]
   }

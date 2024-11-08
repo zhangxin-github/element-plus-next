@@ -1,7 +1,11 @@
 import { buildProps, definePropType, iconPropType } from '@element-plus/utils'
+import type { Arrayable } from '@element-plus/utils'
 
-import type { ExtractPropTypes } from 'vue'
+import type { ExtractPropTypes, PropType } from 'vue'
+import type { Placement } from 'element-plus'
 import type NextBacktop from './next-backtop.vue'
+
+export type TooltipTriggerType = 'hover' | 'focus' | 'click' | 'contextmenu'
 
 export const buttonTypes = [
   'default',
@@ -17,6 +21,7 @@ export const buttonTypes = [
   'text',
   '',
 ] as const
+
 export const nextBacktopProps = buildProps({
   target: {
     type: String,
@@ -46,11 +51,22 @@ export const nextBacktopProps = buildProps({
     default: '',
   },
   icon: {
-    type: iconPropType,
+    type: String,
+    default: '',
   },
   square: Boolean,
-  trigger: { type: String, default: 'hover' },
+  /**
+   * @description How should the tooltip be triggered (to show)
+   */
+  trigger: {
+    type: definePropType<Arrayable<TooltipTriggerType>>([String, Array]),
+    default: 'hover',
+  },
   tooltip: { type: String, default: '' },
+  placement: {
+    type: String as PropType<Placement>,
+    default: 'top',
+  },
 })
 
 export type NextBacktopProps = ExtractPropTypes<typeof nextBacktopProps>

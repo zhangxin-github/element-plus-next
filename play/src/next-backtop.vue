@@ -5,23 +5,66 @@
     hello next-backtop
 
     <el-next-backtop
-      type="success"
-      icon="Check"
+      placement="left"
       :right="100"
+      :bottom="400"
+      :visibility-height="300"
+    >
+      <template #menu>
+        <el-button type="primary" :icon="Service" circle @click="handleClick" />
+        <el-button type="success" :icon="Service" circle />
+        <el-button type="info" :icon="Service" circle />
+      </template>
+    </el-next-backtop>
+    <el-next-backtop
+      placement="right"
+      :right="200"
+      :bottom="400"
+      :visibility-height="300"
+    >
+      <template #menu>
+        <el-button type="primary" :icon="Service" circle @click="handleClick" />
+        <el-button type="success" :icon="Service" circle />
+        <el-button type="info" :icon="Service" circle />
+      </template>
+    </el-next-backtop>
+    <el-next-backtop
+      placement="bottom"
+      :right="300"
+      :bottom="400"
+      :visibility-height="300"
+    >
+      <template #menu>
+        <el-button type="primary" :icon="Service" circle @click="handleClick" />
+        <el-button type="success" :icon="Service" circle />
+        <el-button type="info" :icon="Service" circle />
+      </template>
+    </el-next-backtop>
+
+    <el-next-backtop :right="100" :bottom="300" :visibility-height="300">
+      <template #menu>
+        <el-button type="primary" :icon="Service" circle @click="handleClick" />
+        <el-button type="success" :icon="Service" circle />
+        <el-button type="info" :icon="Service" circle />
+      </template>
+    </el-next-backtop>
+    <el-next-backtop
+      trigger="click"
+      type="primary"
       :bottom="300"
       :visibility-height="300"
     >
-       <template #menu>
-         <el-button type="primary" :icon="Search" circle @click="handleClick" />
-         <el-button type="success" :icon="Search" circle />
-         <el-button type="info" :icon="Search" circle />
-       </template>
+      <template #menu>
+        <el-button type="primary" :icon="Service" circle @click="handleClick" />
+        <el-button type="success" :icon="Service" circle />
+        <el-button type="info" :icon="Service" circle />
+      </template>
     </el-next-backtop>
 
     <el-next-backtop
       square
       type="success"
-      icon="Check"
+      :icon="Service"
       tooltip="Back to top"
       :right="100"
       :bottom="200"
@@ -49,9 +92,12 @@
 
 <script setup lang="ts">
 // code here
-import { computed, defineEmits, defineProps, onMounted, ref, watch } from 'vue'
-import { Search } from '@element-plus/icons-vue'
-const show = ref(false)
+import {
+  Service,
+  ArrowLeft,
+  ArrowRight,
+  ArrowDown,
+} from '@element-plus/icons-vue'
 const handleClick = () => {
   window.alert('hello next-backtop!!!')
 }

@@ -1,5 +1,5 @@
 <template>
-  <div @mouseenter="show = true" @mouseleave="hideMenu">
+  <div>
     <el-backtop
       :bottom="bottom"
       :right="right"
@@ -26,19 +26,27 @@
       </template>
       <template v-if="$slots.menu">
         <el-tooltip
-          placement="top"
+          :placement="placement"
           effect="light"
           popper-class="el-next-backtop__menu"
           :show-arrow="false"
+          :trigger="trigger"
+          @show="handleTooltipShow"
+          @hide="handleTooltipHide"
         >
           <template #content>
-            <div class="item">
+            <div
+              :class="[
+                'item',
+                { row: placement === 'left' || placement === 'right' },
+              ]"
+            >
               <slot name="menu" />
             </div>
           </template>
           <el-button
             :type="type"
-            :icon="icon"
+            :icon="currentIcon"
             :circle="!square"
             :class="{ 'is-square': square }"
             size="large"
@@ -53,7 +61,7 @@
 <script lang="ts" setup>
 import { computed, defineEmits, defineProps, onMounted, ref, watch } from 'vue'
 import { ElBacktop, ElButton, ElIcon, ElTooltip } from 'element-plus'
-import { CaretTop, Search } from '@element-plus/icons-vue'
+import { CaretTop, Close } from '@element-plus/icons-vue'
 import { useNamespace } from '@element-plus/hooks'
 import { nextBacktopProps } from './next-backtop'
 
@@ -72,49 +80,43 @@ const handleClick = () => {
   emit('click')
 }
 
-const show = ref(false)
-
-const handleMenuClick = (event) => {
-  event.stopPropagation() // 阻止事件冒泡到 el-backtop
+const currentIcon = ref(Close)
+const isIconChanged = ref(false)
+const isTooltipVisible = ref(false)
+const handleMenuClick = (e) => {
+  e.stopPropagation() // 阻止事件冒泡到 el-backtop
+  // isTooltipVisible.value = !isTooltipVisible.value
+  // if (isIconChanged.value) {
+  //   currentIcon.value = props.icon // 恢复默认图标
+  // } else {
+  //   currentIcon.value = Close // 更换图标
+  // }
+  // isIconChanged.value = !isIconChanged.value // 切换图标状态
+  if (currentIcon.value === Close) {
+    currentIcon.value = props.icon
+  } else {
+    currentIcon.value = Close
+  }
+}
+const handleTooltipShow = () => {
+  // 工具提示显示时的处理
+  if (props.trigger === 'hover') {
+    currentIcon.value = Close // 鼠标悬停时更换图标
+  }
+}
+const handleTooltipHide = () => {
+  // 工具提示隐藏时的处理
+  currentIcon.value = props.icon // 恢复默认图标
+  isIconChanged.value = false // 重置图标状态
 }
 
-const handleMenuItemClick = (event) => {
-  if (event.target.attributes.href) {
-    window.location.href = event.target.attributes.href.value
+const handleMenuItemClick = (e) => {
+  if (e.target.attributes.href) {
+    window.location.href = e.target.attributes.href.value
   } else {
     console.log('click menu item')
   }
 }
-
-const BOX_SIZE = 100
-const BUTTON_SIZE = 40
-const boxStyle = {
-  width: BOX_SIZE,
-  height: BOX_SIZE,
-  position: 'relative',
-}
-const insetInlineEnd = [
-  (BOX_SIZE - BUTTON_SIZE) / 2,
-  -(BUTTON_SIZE / 2),
-  (BOX_SIZE - BUTTON_SIZE) / 2,
-  BOX_SIZE - BUTTON_SIZE / 2,
-]
-const bottomValue = [
-  BOX_SIZE - BUTTON_SIZE / 2,
-  (BOX_SIZE - BUTTON_SIZE) / 2,
-  -BUTTON_SIZE / 2,
-  (BOX_SIZE - BUTTON_SIZE) / 2,
-]
-const computedMenuStyle = computed(() => {
-  const index = ['top', 'right', 'bottom', 'left'].indexOf(props.boxStyle)
-  return {
-    position: 'absolute',
-    width: '100%',
-    // insetInlineEnd: `${insetInlineEnd[index]}px`,
-    // bottom: `${bottomValue[index]}px`,
-    bottom: `50px`,
-  }
-})
 </script>
 
 <style lang="scss" scoped>
@@ -133,9 +135,14 @@ const computedMenuStyle = computed(() => {
   }
 }
 </style>
+
 <style lang="scss">
 .el-next-backtop__menu {
   border: none !important;
+
+  .el-button + .el-button {
+    margin-left: 0;
+  }
 
   .item {
     display: flex;
@@ -144,10 +151,14 @@ const computedMenuStyle = computed(() => {
     justify-content: center;
     width: 100%;
     gap: 10px;
+  }
 
-    .el-button + .el-button {
-      margin-left: 0;
-    }
+  .item.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 }
 </style>
