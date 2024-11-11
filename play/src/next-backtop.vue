@@ -5,9 +5,11 @@
     hello next-backtop
 
     <el-next-backtop
+      float
       placement="left"
+      :icon="ArrowLeft"
       :right="100"
-      :bottom="400"
+      :bottom="340"
       :visibility-height="300"
     >
       <template #menu>
@@ -17,10 +19,11 @@
       </template>
     </el-next-backtop>
     <el-next-backtop
+      float
       placement="right"
+      :icon="ArrowRight"
       :right="200"
-      :bottom="400"
-      :visibility-height="300"
+      :bottom="340"
     >
       <template #menu>
         <el-button type="primary" :icon="Service" circle @click="handleClick" />
@@ -29,10 +32,11 @@
       </template>
     </el-next-backtop>
     <el-next-backtop
+      float
       placement="bottom"
+      :icon="ArrowDown"
       :right="300"
-      :bottom="400"
-      :visibility-height="300"
+      :bottom="340"
     >
       <template #menu>
         <el-button type="primary" :icon="Service" circle @click="handleClick" />
@@ -41,7 +45,7 @@
       </template>
     </el-next-backtop>
 
-    <el-next-backtop :right="100" :bottom="300" :visibility-height="300">
+    <el-next-backtop float :right="100" :bottom="260" :icon="Service">
       <template #menu>
         <el-button type="primary" :icon="Service" circle @click="handleClick" />
         <el-button type="success" :icon="Service" circle />
@@ -49,10 +53,11 @@
       </template>
     </el-next-backtop>
     <el-next-backtop
+      float
       trigger="click"
       type="primary"
-      :bottom="300"
-      :visibility-height="300"
+      :icon="Service"
+      :bottom="260"
     >
       <template #menu>
         <el-button type="primary" :icon="Service" circle @click="handleClick" />
@@ -62,12 +67,12 @@
     </el-next-backtop>
 
     <el-next-backtop
+      float
       square
       type="success"
-      :icon="Service"
       tooltip="Back to top"
       :right="100"
-      :bottom="200"
+      :bottom="180"
     />
 
     <el-next-backtop :bottom="100">

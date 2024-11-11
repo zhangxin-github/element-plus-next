@@ -5,13 +5,13 @@ lang: zh-CN
 
 # NextBacktop 回到顶部
 
-增强 NextBacktop 回到顶部，继承 el-backtop 所有内容，扩展支持浮动 button 功能。
+增强 Backtop 回到顶部，继承 el-backtop 所有内容，扩展支持浮动 button 功能。
 
 ## 基础用法
 
-返回页面顶部的操作按钮。通过滑动来查看容器右下角的按钮。基础用法可参考 [el-backtop](./backtop.md#basic)。
+返回页面顶部的操作按钮。基础用法可参考 [el-backtop](./backtop.md#basic)。
 
-## 扩展支持 FloatButton 悬浮按钮
+## 增强用法
 
 通过 type 改变悬浮按钮的类型。
 
@@ -43,12 +43,16 @@ next-backtop/backtop-placement
 
 ### Attributes
 
-| 名称              | 说明                             | 类型      | 默认值 |
-| ----------------- | -------------------------------- | --------- | ------ |
-| target            | 触发滚动的对象                   | ^[string] | —      |
-| visibility-height | 滚动高度达到此参数值才出现       | ^[number] | 200    |
-| right             | 控制其显示位置，距离页面右边距   | ^[number] | 40     |
-| bottom            | 控制其显示位置，距离页面底部距离 | ^[number] | 40     |
+| 名称              | 说明                             | 类型                            | 默认值  |
+| ----------------- | -------------------------------- | ------------------------------- | ------- |
+| target            | 触发滚动的对象                   | ^[string]                       | —       |
+| visibility-height | 滚动高度达到此参数值才出现       | ^[number]                       | 200     |
+| right             | 控制其显示位置，距离页面右边距   | ^[number]                       | 40      |
+| bottom            | 控制其显示位置，距离页面底部距离 | ^[number]                       | 40      |
+| float             | 启用扩展                         | ^[Boolean]                      | false   |
+| type              | 设置按钮类型                     | ^[buttonTypes]                  | default |
+| shape             | 设置按钮形状                     | ^[enum]`circle \| square \| ''` | circle  |
+| tooltip           | 气泡卡片的内容                   | ^[string]                       | -       |
 
 ### Events
 
@@ -61,3 +65,4 @@ next-backtop/backtop-placement
 | 插槽名  | 说明           |
 | ------- | -------------- |
 | default | 自定义默认内容 |
+| menu    | 自定义菜单内容 |

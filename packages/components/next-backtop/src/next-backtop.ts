@@ -14,22 +14,23 @@ export const buttonTypes = [
   'warning',
   'info',
   'danger',
-  /**
-   * @deprecated
-   * Text type will be deprecated in the next major version (3.0.0)
-   */
   'text',
   '',
 ] as const
 
 export const nextBacktopProps = buildProps({
-  target: {
-    type: String,
-    default: 'body',
-  },
+  /**
+   *
+   * @description 基础组件属性
+   *
+   */
   visibilityHeight: {
     type: Number,
     default: 200,
+  },
+  target: {
+    type: String,
+    default: '',
   },
   right: {
     type: Number,
@@ -39,25 +40,26 @@ export const nextBacktopProps = buildProps({
     type: Number,
     default: 40,
   },
+  /**
+   *
+   * @description 增强组件属性
+   *
+   */
+  float: { type: Boolean, default: false },
   hover: {
     type: Boolean,
     default: false,
   },
   boxStyle: { type: String, default: 'top' },
-  float: { type: Boolean, default: false },
   type: {
     type: String,
     values: buttonTypes,
     default: '',
   },
   icon: {
-    type: String,
-    default: '',
+    type: iconPropType,
   },
   square: Boolean,
-  /**
-   * @description How should the tooltip be triggered (to show)
-   */
   trigger: {
     type: definePropType<Arrayable<TooltipTriggerType>>([String, Array]),
     default: 'hover',

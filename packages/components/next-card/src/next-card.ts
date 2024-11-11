@@ -4,7 +4,9 @@ import type NextCard from './next-card.vue'
 
 export const nextCardProps = buildProps({
   /**
-   * @description 继承了 el-card 的所有属性
+   *
+   * @description 基础组件属性
+   *
    */
   header: {
     type: String,
@@ -24,9 +26,10 @@ export const nextCardProps = buildProps({
     values: ['always', 'hover', 'never'],
     default: 'always',
   },
-
   /**
-   * @description
+   *
+   * @description 增强组件属性
+   *
    */
   headerBordered: {
     type: Boolean,

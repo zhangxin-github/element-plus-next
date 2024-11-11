@@ -361,7 +361,7 @@
     ]
   },
   "next": {
-    "text": "Next",
+    "text": "Next 组件",
     "children": [
       {
         "link": "/next-card",
