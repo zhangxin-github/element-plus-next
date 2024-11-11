@@ -111,6 +111,7 @@ import { ElMention } from '@element-plus/components/mention'
 // next
 import { ElNextCard } from '@element-plus/components/next-card'
 import { ElNextBacktop } from '@element-plus/components/next-backtop'
+import { ElNextList } from '@element-plus/components/next-list'
 
 import type { Plugin } from 'vue'
 
@@ -224,4 +225,5 @@ export default [
   // next
   ElNextCard,
   ElNextBacktop,
+  ElNextList,
 ] as Plugin[]
