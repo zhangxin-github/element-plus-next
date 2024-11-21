@@ -1,6 +1,3 @@
 import '@element-plus/components/base/style'
-import '@element-plus/theme-chalk/src/table.scss'
-import '@element-plus/components/checkbox/style'
-import '@element-plus/components/tooltip/style'
-import '@element-plus/components/scrollbar/style'
+import '@element-plus/theme-chalk/src/next-list.scss'
 import '@element-plus/components/link/style'
