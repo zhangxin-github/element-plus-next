@@ -1,17 +1,17 @@
 # 🚀 版本日志
 
-## 0.1.0 (2024-10-22)
+## 2.8.6 (2024-10-22)
 
 ### 🐣 功能
 
-1. 添加 next-card 组件 。
-2. 添加 next-backtop 组件。
+1. 实现 next-card 组件。
+2. 实现 next-backtop 组件。
+3. 实现 next-list 组件。
 
-### ⚠️ 注意：本地开发指南
+### ⚠️ 注意：开发指南
 
-1. clone 项目拉取 dev 分支更新代码。
-1. 创建 release/v版本号 分支。
-
+1. clone 项目并获取最新 dev 分支。
+1. 创建 release/v 版本号.日期 的版本分支。
 1. 使用 npm 安装 pnpm
 
 ```
@@ -21,7 +21,7 @@ nvm use 18.12.0
 npm install -g pnpm
 ```
 
-4. 本地开发运行命令
+4. 本地运行命令
 
 ```
 pnpm i
@@ -36,10 +36,11 @@ pnpm docs:dev
 pnpm gen <组件名>
 ```
 
-创建组件后，手动添加
+创建组件后，手动修改
 
 - packages/components/index.ts
 - packages/element-plus/components.ts
+- packages\theme-chalk\src\index.scss
 
 6. 创建组件文档
 
@@ -71,8 +72,7 @@ npm publish --registry https://maven.unibss.com:10010/repository/npm-hosted
 - docs/.vitepress/vitepress/components/vp-app.vue
 - docs/.vitepress/vitepress/components/doc-content/vp-table-of-content.vue
 
-
-7. 参考
+8. 参考
 
 ```
 https://juejin.cn/post/7257736231882407995

@@ -56,7 +56,7 @@
             :circle="!square"
             :class="{ 'is-square': square }"
             size="large"
-            @click="handleMenuClick"
+            @click="handleMenuClick($event)"
           />
         </el-tooltip>
       </template>
@@ -68,7 +68,7 @@
 import { defineEmits, defineProps, ref } from 'vue'
 import { ElBacktop, ElButton, ElIcon, ElTooltip } from 'element-plus'
 import { CaretTop, Close } from '@element-plus/icons-vue'
-import { useNamespace } from '@element-plus/hooks'
+// import { useNamespace } from '@element-plus/hooks'
 import { nextBacktopProps } from './next-backtop'
 
 defineOptions({
@@ -76,7 +76,7 @@ defineOptions({
 })
 
 const props = defineProps(nextBacktopProps)
-const ns = useNamespace('backtop')
+// const ns = useNamespace('backtop')
 
 // 继承 el-backtop 的所有事件
 const emit = defineEmits(['click'])
@@ -87,7 +87,7 @@ const handleClick = () => {
 }
 
 const isIconChanged = ref(false)
-const handleMenuClick = (e) => {
+const handleMenuClick = (e: MouseEvent) => {
   e.stopPropagation() // 阻止事件冒泡到 el-backtop
   // isIconChanged.value = !isIconChanged.value // 切换图标状态
 }
@@ -108,51 +108,3 @@ const handleTooltipHide = () => {
 //   }
 // }
 </script>
-
-<style lang="scss" scoped>
-.el-next-backtop {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  box-shadow: none;
-
-  .el-button.is-square {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-  }
-}
-</style>
-
-<style lang="scss">
-.el-next-backtop__menu {
-  border: none !important;
-
-  .el-button + .el-button {
-    margin-left: 0;
-  }
-
-  .item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .item.row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-}
-
-.el-next-backtop__tooltip.no-tooltip {
-  transform: none !important;
-}
-</style>

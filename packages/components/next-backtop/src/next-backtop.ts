@@ -5,9 +5,9 @@ import type { ExtractPropTypes, PropType } from 'vue'
 import type { Placement } from 'element-plus'
 import type NextBacktop from './next-backtop.vue'
 
-export type TooltipTriggerType = 'hover' | 'focus' | 'click' | 'contextmenu'
+export type nextTooltipTriggerType = 'hover' | 'focus' | 'click' | 'contextmenu'
 
-export const buttonTypes = [
+export const nextButtonTypes = [
   'default',
   'primary',
   'success',
@@ -53,7 +53,7 @@ export const nextBacktopProps = buildProps({
   boxStyle: { type: String, default: 'top' },
   type: {
     type: String,
-    values: buttonTypes,
+    values: nextButtonTypes,
     default: '',
   },
   icon: {
@@ -61,7 +61,7 @@ export const nextBacktopProps = buildProps({
   },
   square: Boolean,
   trigger: {
-    type: definePropType<Arrayable<TooltipTriggerType>>([String, Array]),
+    type: definePropType<Arrayable<nextTooltipTriggerType>>([String, Array]),
     default: 'hover',
   },
   tooltip: { type: String, default: '' },

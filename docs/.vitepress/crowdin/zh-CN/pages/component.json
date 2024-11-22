@@ -370,6 +370,10 @@
       {
         "link": "/next-backtop",
         "text": "NextBacktop 回到顶部"
+      },
+      {
+        "link": "/next-list",
+        "text": "NextList 列表"
       }
     ]
   }

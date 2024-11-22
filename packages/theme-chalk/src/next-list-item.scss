@@ -1,0 +1,74 @@
+@use 'sass:map';
+
+@use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
+@use 'common/var' as *;
+
+// 定义自定义变量
+$next-list-item-meta-avatar-size: 56px;
+$next-list-item-meta-avatar-margin-right: 16px;
+$next-list-item-action-gap: 16px;
+
+@include b(next-list-item) {
+  padding: map.get($table-padding, 'default');
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px
+  }
+
+  .#{$namespace}-next-list-item-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex: 1;
+
+    .#{$namespace}-next-list-item__meta {
+      display: flex;
+    }
+  }
+
+  .#{$namespace}-next-list-item__meta-avatar {
+    width: $next-list-item-meta-avatar-size;
+    height: $next-list-item-meta-avatar-size;
+    border-radius: calc($next-list-item-meta-avatar-size / 2);
+    overflow: hidden;
+    background: #eee;
+    margin-right: $next-list-item-meta-avatar-margin-right;
+    flex-shrink: 0;
+  }
+  
+  .#{$namespace}-next-list-item__meta-avatar img {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+  }
+
+  .#{$namespace}-next-list-item__meta-title {
+    padding: 0;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: getCssVar('text-color', 'primary');
+  }
+  
+  .#{$namespace}-next-list-item__meta-description {
+    margin: 0;
+    margin-right: 24px;
+    color: getCssVar('text-color', 'primary');
+  }
+
+  .#{$namespace}-next-list-item__action {
+    display: flex;
+    gap: $next-list-item-action-gap;
+  }
+}
