@@ -39,12 +39,6 @@ jobs:
         env:
           CROWDIN_TOKEN: ${{secrets.CROWDIN_TOKEN}}
 
-      - name: Pull Crowdin translations
-        run: cd docs && pnpm exec crowdin download -l zh-CN && pnpm exec crowdin download -l es-ES
-
-      - name: Generate common locale
-        run: pnpm docs:gen-locale
-
       - name: Install latest Element Plus
         run: cd docs && pnpm i element-plus@latest
 
@@ -68,16 +62,6 @@ jobs:
           git-config-name: ElementPlusBot
           git-config-email: element-plus@outlook.com
           commit-message: website deploy
-
-      - name: Deploy to vercel
-        uses: JamesIves/github-pages-deploy-action@v4.3.4
-        with:
-          token: ${{ secrets.EP_BOT_TOKEN }}
-          branch: main
-          folder: docs/.vitepress/dist
-          repository-name: element-plus/vercel-publish
-          git-config-name: ElementPlusBot
-          git-config-email: element-plus@outlook.com
 
       - name: Sync
         env:
