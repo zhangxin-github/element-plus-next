@@ -34,11 +34,6 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Init Crowdin token
-        run: pnpm run docs:crowdin-credentials
-        env:
-          CROWDIN_TOKEN: ${{secrets.CROWDIN_TOKEN}}
-
       - name: Install latest Element Plus
         run: cd docs && pnpm i element-plus@latest
 
