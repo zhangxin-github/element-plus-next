@@ -50,6 +50,7 @@ languages.forEach((lang) => {
 
 const setupConfig = (configEnv) => {
   const config: UserConfig<any> = {
+    base: '/element-plus-next/',
     title: 'Element Plus',
     description: 'A Vue 3 based component library for designers and developers',
     lastUpdated: true,

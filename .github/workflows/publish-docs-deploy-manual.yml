@@ -60,8 +60,3 @@ jobs:
           git-config-name: ElementPlusBot
           git-config-email: element-plus@outlook.com
           commit-message: website deploy
-
-      - name: Sync
-        env:
-          TRIGGERSYNCURL: ${{ secrets.TRIGGERSYNCURL }}
-        run: curl -k "$TRIGGERSYNCURL"
