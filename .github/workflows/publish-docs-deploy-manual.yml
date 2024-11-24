@@ -37,6 +37,9 @@ jobs:
       - name: Install latest Element Plus
         run: cd docs && pnpm i element-plus@latest
 
+      - name: Generate common locale
+        run: pnpm docs:gen-locale
+
       - name: Build Metadata
         run: cd internal/metadata && pnpm build
         env:
