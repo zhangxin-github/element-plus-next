@@ -9,7 +9,9 @@
     >
       <template v-if="!float">
         <slot>
-          <el-icon><CaretTop /></el-icon>
+          <el-icon>
+            <CaretTop />
+          </el-icon>
         </slot>
       </template>
       <template v-if="float && !$slots.menu">

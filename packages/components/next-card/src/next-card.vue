@@ -5,8 +5,6 @@
       ns.is(`${shadow}-shadow`),
       {
         'el-next-card': type === 'horizontal' || type === 'vertical',
-        horizontal: type === 'horizontal',
-        vertical: type === 'vertical',
       },
     ]"
   >

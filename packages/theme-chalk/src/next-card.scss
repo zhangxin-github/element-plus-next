@@ -1,90 +1,95 @@
-  .el-next-card {
-    display: flex;
-    flex-direction: column;
-    padding: 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
+@use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
+@use 'common/var' as *;
+
+.el-next-card {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
   .horizontal-layout {
     display: flex;
     align-items: center;
-  
+
     .card-img {
       width: 100px;
       height: auto;
       margin-right: 16px;
     }
-  
+
     .card-img img {
       max-width: 100%;
       width: 100%;
       height: 100%;
     }
   }
-  
+
   .vertical-layout {
     text-align: center;
-  
+
     .card-img {
       width: 100px;
       height: auto;
     }
   }
-  
-  .no-border {
-    border-top: none;
-    /* 移除边框 */
-    border-bottom: none;
-    /* 移除边框 */
-  }
-  
-  .card-content {
-    flex: 1;
-  }
-  
-  .card-title {
-    padding: 0;
-    margin: 8px 0;
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .card-desc {
-    margin: 0;
-    color: #666;
-  }
-  
-  .el-next-card__header {
-    display: flex;
-  }
-  
-  .el-next-card__header-wrapper {
-    flex: 1;
-    display: flex;
-    align-items: center;
-  }
-  
-  .el-next-card__action {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-left: auto;
-  }
-  
-  .el-next-card__body {
-    padding: 3px;
-  }
-  
-  .el-next-card__footer {
-    display: flex;
-  }
-  
-  .el-next-card__footer-wrapper {
-    flex: 1;
-  }
-  
-  :deep(.el-tooltip__trigger:focus-visible) {
-    outline: none;
-  }
+}
+
+.no-border {
+  border-top: none;
+  /* 移除边框 */
+  border-bottom: none;
+  /* 移除边框 */
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-title {
+  padding: 0;
+  margin: 8px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-desc {
+  margin: 0;
+  color: #666;
+}
+
+.el-next-card__header {
+  display: flex;
+}
+
+.el-next-card__header-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.el-next-card__action {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+}
+
+.el-next-card__body {
+  padding: 3px;
+}
+
+.el-next-card__footer {
+  display: flex;
+}
+
+.el-next-card__footer-wrapper {
+  flex: 1;
+}
+
+// 穿透修改el-dropdown点击后有边框的问题
+:deep(.el-tooltip__trigger:focus-visible) {
+  outline: none;
+}

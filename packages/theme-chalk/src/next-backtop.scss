@@ -1,17 +1,43 @@
-
 .el-next-backtop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: none;
+
+  .el-button.is-square {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+}
+
+.el-next-backtop__menu {
+  border: none !important;
+
+  .el-button + .el-button {
+    margin-left: 0;
+  }
+
+  .item {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: none;
-  
-    .el-button.is-square {
-      width: 100%;
-      height: 100%;
-      padding: 0;
-    }
+    width: 100%;
+    gap: 10px;
   }
-  
-  
+
+  .item.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+.el-next-backtop__tooltip.no-tooltip {
+  transform: none !important;
+}
