@@ -72,7 +72,11 @@ npm publish --registry https://maven.unibss.com:10010/repository/npm-hosted
 - docs/.vitepress/vitepress/components/vp-app.vue
 - docs/.vitepress/vitepress/components/doc-content/vp-table-of-content.vue
 
-8. 参考
+8. 发布组件文档
+
+-
+
+9. 参考
 
 ```
 https://juejin.cn/post/7257736231882407995
