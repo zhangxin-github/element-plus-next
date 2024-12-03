@@ -12,11 +12,11 @@
     "@docsearch/js": "^3.1.0",
     "@element-plus/icons-vue": "^2.3.1",
     "@element-plus/metadata": "workspace:*",
+    "@unibss/element-plus-next": "0.0.0-dev.1",
     "@vue/shared": "^3.2.37",
     "@vueuse/core": "^9.1.0",
     "axios": "^0.27.2",
     "clipboard-copy": "^4.0.1",
-    "element-plus": "npm:element-plus@latest",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0"
   },
