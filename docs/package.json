@@ -5,6 +5,7 @@
     "dev": "pnpm gen-locale && vitepress dev .",
     "build": "NODE_ENV=production && vitepress build . && tsx .vitepress/build/rebuild-pwa.ts",
     "serve": "NODE_ENV=production vitepress serve . --port 5001",
+    "preview": "NODE_ENV=production && vitepress preview . --port 8080",
     "gen-locale": "rimraf .vitepress/i18n && tsx .vitepress/build/crowdin-generate.ts",
     "crowdin-credentials": "tsx .vitepress/build/crowdin-credentials.ts"
   },
@@ -12,11 +13,11 @@
     "@docsearch/js": "^3.1.0",
     "@element-plus/icons-vue": "^2.3.1",
     "@element-plus/metadata": "workspace:*",
-    "@unibss/element-plus-next": "0.0.0-dev.1",
     "@vue/shared": "^3.2.37",
     "@vueuse/core": "^9.1.0",
     "axios": "^0.27.2",
     "clipboard-copy": "^4.0.1",
+    "element-plus": "npm:@unibss/element-plus-next@latest",
     "normalize.css": "^8.0.1",
     "nprogress": "^0.2.0"
   },
