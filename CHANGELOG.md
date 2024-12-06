@@ -74,7 +74,9 @@ npm publish --registry https://maven.unibss.com:10010/repository/npm-hosted
 
 8. 发布组件文档
 
--
+- 推送 release 分支到 gitee, 自动同步到 github
+- 自动触发 github action, 自动打包并发布到 gh-pages 分支
+- 使用 jpom 构建拉取 ggh-pages 到 wwwroot 目录。
 
 9. 参考
 
