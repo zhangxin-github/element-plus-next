@@ -38,7 +38,7 @@ jobs:
         run: pnpm i --frozen-lockfile
 
       - name: Install latest Element Plus
-        run: cd docs && pnpm i element-plus@latest
+        run: cd docs && pnpm i @unibss/element-plus-next
 
       - name: Generate common locale
         run: pnpm docs:gen-locale
