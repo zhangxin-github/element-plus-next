@@ -5,7 +5,7 @@
 .el-next-card {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 0;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -15,7 +15,6 @@
     align-items: center;
 
     .card-img {
-      width: 100px;
       height: auto;
       margin-right: 16px;
     }
@@ -78,7 +77,7 @@
 }
 
 .el-next-card__body {
-  padding: 3px;
+  padding: 0;
 }
 
 .el-next-card__footer {

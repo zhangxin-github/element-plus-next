@@ -13,24 +13,29 @@ lang: zh-CN
 
 ## 增强用法
 
-由卡片上方的标题栏组成，标题栏中可包含标题、图片、操作区、状态等内容。
+### 标题栏卡片
+
+在标题栏中实现包含图片、标题和描述性文字等内容。
 
 :::demo
 next-card/with-icon-title-desc
 :::
 
 带操作的卡片
+
 :::demo
 next-card/with-icon-title-desc-action
 :::
 
-由极简卡片下方的底部栏组成，可包含标题、图片、操作区、状态等内容。
+### 海报卡片
+
+简洁的图片封面+下方的底部栏组成。
 
 :::demo
 next-card/with-footer
 :::
 
-同时带 header 和 footer 的卡片
+### 同时带 header 和 footer 的卡片
 
 :::demo
 next-card/with-header-footer
